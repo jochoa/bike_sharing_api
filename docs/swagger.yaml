@@ -1,0 +1,177 @@
+info:
+  contact: {}
+paths:
+  /api/add_bicycle:
+    post:
+      consumes:
+      - application/json
+      description: adds a bicycle item to the stock (normally this is only for user
+        with admin role)
+      parameters:
+      - description: json object for a transaction
+        in: body
+        name: json
+        required: true
+        schema:
+          example: '{ "type": "<type>", "serial_number": "<serial_number>", "kilometers":
+            <int>}'
+          type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: add a bicycle to the stock
+      tags:
+      - example
+  /api/get_all_available_bicycles:
+    get:
+      consumes:
+      - application/json
+      description: get all the available bicycles
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: get all the available bicycles
+      tags:
+      - example
+  /api/get_all_bicycles:
+    get:
+      consumes:
+      - application/json
+      description: get all the bicycles (normally this is only for user with admin
+        role)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: get all the bicycles in the stock
+      tags:
+      - example
+  /api/return_bicycle:
+    patch:
+      consumes:
+      - application/json
+      description: used for returning a bicycle so that the user is allow again to
+        rent another bicycle
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Returns a bicycle api
+      tags:
+      - example
+  /api/transaction:
+    get:
+      consumes:
+      - application/json
+      description: get all the rental transaction (normally this is only for user
+        with admin role)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: get all the rental transactions
+      tags:
+      - example
+    post:
+      consumes:
+      - application/json
+      description: create a new rental transaction
+      parameters:
+      - description: json object for a transaction
+        in: body
+        name: json
+        required: true
+        schema:
+          example: '{"Status": "rented","requestBikeById": {"id": 8}}'
+          type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: create a rental transaction
+      tags:
+      - example
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: user login
+      parameters:
+      - description: login data for user
+        in: body
+        name: json
+        required: true
+        schema:
+          example: '{"username":"<username>", "password":"<password>"}'
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: user login
+      tags:
+      - example
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: register a user
+      parameters:
+      - description: register data for user
+        in: body
+        name: json
+        required: true
+        schema:
+          example: '{"username":"<username>", "password":"<password>"}'
+          type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      summary: register a user example
+      tags:
+      - example
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
