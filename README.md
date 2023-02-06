@@ -43,7 +43,7 @@ Copy and adjust the .env file
 
 ## Endpoints
 
-![image desc](development/images/Model_erd.PNG)
+![image desc](development/images/swagger_endpoints.PNG)
 
 For swagger:
 
